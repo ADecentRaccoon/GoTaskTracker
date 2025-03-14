@@ -29,7 +29,7 @@ var addCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(addCmd)
 	addCmd.Flags().StringVarP(&username, "username", "u", "Me", "Flag to add username to new task")
-	addCmd.Flags().StringVarP(&taskname, "taskname", "t", "None", "Flag to add taks to new task")
+	addCmd.Flags().StringVarP(&taskname, "taskname", "t", "None", "Flag to add tasks to new task")
 	addCmd.Flags().StringVarP(&mark, "mark", "m", "in progress", "Flag to add progress-mark to new task")
 }
 
@@ -41,13 +41,14 @@ func addTask(user *string, task *string, mark *string, filename string) {
 		panic(err)
 	}
 	defer file.Close()
-	if userTasks, exist := tasks[*user]; exist == true{
+	
+	if userTasks, exist := tasks[*user]; exist{
 		userTasks[*task] = *mark
 	} else{
 		tasks[*user] = make(map[string]string)
 		tasks[*user][*task] = *mark
 	}
-	tasks[*user] = map[string]string{*task: *mark}
+	// tasks[*user] = map[string]string{*task: *mark}
 	jsoned, parceErr := json.Marshal(tasks)
 	if parceErr != nil {
 		panic(parceErr)

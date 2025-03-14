@@ -40,9 +40,6 @@ func init() {
 	// deleteCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func remove(slice [][3]string, index int) [][3]string {
-    return append(slice[:index], slice[index+1:]...)
-}
 
 
 func deleteTaks(user *string, taskToDelete *string, filename string) {
@@ -59,12 +56,22 @@ func deleteTaks(user *string, taskToDelete *string, filename string) {
 		
 		if *user != "all" && *taskToDelete != "all"{
 			delete(tasks[*user], *taskToDelete)
+		} else if *user != "all"{
+			for iterTask, _ := range tasks[*user]{
+				delete(tasks[*user], iterTask)
+			}
 		}
 
 		jsoneded, errParce := json.Marshal(tasks)
 		if errParce != nil{
 			panic(errParce)
 		}
+		
+		file, err := os.OpenFile(filename, os.O_TRUNC|os.O_WRONLY, 0666)
+		if err != nil{
+			panic(err)
+		}
+
 		_, errWrite := file.Write(jsoneded)
 		if errWrite != nil{
 			panic(errWrite)
