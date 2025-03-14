@@ -55,18 +55,12 @@ func deleteTaks(user *string, taskToDelete *string, filename string) {
 			os.Create(filename)
 		}
 	}
-
 		tasks := pkg.LoadTask(filename)
-		for index, task := range tasks {
-			if (task[0] == *user || *user == "all") && (task[1] == *taskToDelete){
-				tasks = remove(tasks, index)
-			}
+		
+		if *user != "all" && *taskToDelete != "all"{
+			delete(tasks[*user], *taskToDelete)
 		}
-		file, err := os.OpenFile("data.json", os.O_WRONLY|os.O_TRUNC, 0666)
-		if err != nil{
-			panic(err)
-		}
-		defer file.Close()
+
 		jsoneded, errParce := json.Marshal(tasks)
 		if errParce != nil{
 			panic(errParce)
@@ -75,4 +69,5 @@ func deleteTaks(user *string, taskToDelete *string, filename string) {
 		if errWrite != nil{
 			panic(errWrite)
 		}
+		defer file.Close()
 	}

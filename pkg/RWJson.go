@@ -6,16 +6,16 @@ import (
 )
 
 
-func LoadTask(filename string) [][3]string {
+func LoadTask(filename string) map[string]map[string]string {
 	tasks, err := os.ReadFile(filename)
 	if os.IsNotExist(err) {
 		os.Create(filename)
-		return [][3]string{}
+		return map[string]map[string]string{}
 	}
 	if len(tasks) == 0 {
-		return [][3]string{}
+		return map[string]map[string]string{}
 	}
-	var answer [][3]string
+	var answer map[string]map[string]string
 	parceErr := json.Unmarshal(tasks, &answer)
 	if parceErr != nil {
 		panic(parceErr)

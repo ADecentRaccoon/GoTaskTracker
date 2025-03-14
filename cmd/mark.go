@@ -38,32 +38,47 @@ func init() {
 }
 
 func markTaks(user *string, taskToDMark *string, mark *string, filename string) {
-	if *user == "all" && *taskToDMark == "all" {
+	if *user == "all" && *taskToDMark == "all" { // in case of all progress-markes should be change 
 		fmt.Printf("\tAre you sure that you want to mark all tasks as %s? [y/N]\n", *mark)
 		ans := ""
 		fmt.Scanln(&ans)
 		if ans == "Y" || ans == "yes" || ans == "Yes"|| ans == "y" {
 			tasks := pkg.LoadTask(filename)
-			for _, task := range tasks{
-				task[2] = *mark
+			for iterUser, usersTasks := range tasks{
+				for userTask, _ := range usersTasks{
+					tasks[iterUser][userTask] = *mark
+				}
 			}
 		}
 	}
+
 	tasks := pkg.LoadTask("data.json")
-	file, err := os.OpenFile("data.json", os.O_WRONLY|os.O_TRUNC, 0666)
+
+	if *user != "all" && *taskToDMark != "all"{ // fast progress-mark changing O(1)
+		tasks[*user][*taskToDMark] = *mark
+		} else if *user != "all"{ // iteration thrue tasks. Much slower (O(n) n - quantity of tasks)
+			for iterTask, _ := range tasks[*user]{
+				tasks[*user][iterTask] = *taskToDMark
+			} 
+		} else if *taskToDMark != "all"{ // iteration thrue users. O(n) n - quantity of users
+			for iterUser, _ := range tasks{
+				tasks[iterUser][*taskToDMark] = *taskToDMark
+			}
+		}
+	
+	
+	
+		
+	jsoneded, errParce := json.Marshal(tasks) // marshaling changes
+	if errParce != nil{
+		panic(errParce)
+	}
+
+	file, err := os.OpenFile("data.json", os.O_WRONLY|os.O_TRUNC, 0666) // saving changes
 	if err != nil{
 		panic(err)
 	}
 	defer file.Close()
-	for i := range tasks{
-		if (*user == username || *user == "all") && (*taskToDMark == taskname || *taskToDMark == "all"){
-			tasks[i][2] = *mark
-		}
-	}
-	jsoneded, errParce := json.Marshal(tasks)
-	if errParce != nil{
-		panic(errParce)
-	}
 	_, errWrite := file.Write(jsoneded)
 		if errWrite != nil{
 			panic(errWrite)
