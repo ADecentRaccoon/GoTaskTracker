@@ -12,32 +12,28 @@ import (
 	"fmt"
 )
 
-var user string
-var taskToDelete string
+var deleteUser string
+var deleteTask string
 
 // deleteCmd represents the delete command
 var deleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "commant to delete you'r tasks",
-	Long: ``,// finish later
+	Short: "command to delete you'r tasks",
+	Long: `This command deletes tasks or users
+		Usage: delete --user {Username default "all"} --task {Name of task default "all"}
+		Examples: 
+			delete --user Me --task "go outside"					- deletes task "go outside" from user "Me"
+			delete -u Me											- deletes all tasks of user "Me"
+			delete -m "Blocked"										- deletes all tasks`,
 	Run: func(cmd *cobra.Command, args []string) {
-		deleteTaks(&user, &taskToDelete, "data.json")
+		deleteTaks(&deleteUser, &deleteTask, "data.json")
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(deleteCmd)
-	deleteCmd.Flags().StringVarP(&user, "user", "u", "all", "Select user to delete task")
-	deleteCmd.Flags().StringVarP(&taskToDelete, "task", "t", "all", "Select task to delete")
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// deleteCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// deleteCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	deleteCmd.Flags().StringVarP(&deleteUser, "user", "u", "all", "Select user to delete task")
+	deleteCmd.Flags().StringVarP(&deleteTask, "task", "t", "all", "Select task to delete")
 }
 
 
