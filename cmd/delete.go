@@ -5,7 +5,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"TaskTracker/pkg"
+	"github.com/ADecentRaccoon/GoTaskTracker/pkg"
 	"github.com/spf13/cobra"
 	"os"
 	"encoding/json"

@@ -1,1 +1,84 @@
-{}
+{
+    "Alice": {
+      "Read book": "In Progress",
+      "Go jogging": "In Progress"
+    },
+    "Bob": {
+      "Write report": "Done"
+    },
+    "Charlie": {
+      "Buy groceries": "In Progress",
+      "Call mom": "Done",
+      "Walk dog": "In Progress"
+    },
+    "David": {
+      "Clean room": "Done",
+      "Do homework": "In Progress",
+      "Fix door handle": "Done",
+      "Send email updates": "In Progress"
+    },
+    "Eve": {
+      "Cook dinner": "Done"
+    },
+    "Frank": {
+      "Paint fence": "In Progress",
+      "Reply emails": "Done",
+      "Clean garage": "In Progress"
+    },
+    "Grace": {
+      "Walk dog": "Done",
+      "Organize closet": "In Progress"
+    },
+    "Helen": {
+      "Meditate": "In Progress",
+      "Fix sink": "Done",
+      "Order new shoes": "Done",
+      "Watch online course": "In Progress",
+      "Write in journal": "In Progress"
+    },
+    "Ian": {
+      "Write blog post": "Done",
+      "Study French": "In Progress",
+      "Backup computer": "Done"
+    },
+    "Jack": {
+      "Mow lawn": "Done",
+      "Watch tutorial": "In Progress"
+    },
+    "Kate": {},
+    "Leo": {
+      "Write poem": "In Progress",
+      "Go hiking": "Done"
+    },
+    "Mia": {
+      "Journal writing": "In Progress"
+    },
+    "Noah": {
+      "Sign up for gym": "In Progress",
+      "Repair laptop": "Done",
+      "Read news articles": "Done"
+    },
+    "Olivia": {
+      "Practice yoga": "Done",
+      "Cook healthy meal": "In Progress",
+      "Join book club": "Done"
+    },
+    "Peter": {
+      "Build new shelf": "In Progress",
+      "Sell old phone": "Done"
+    },
+    "Quinn": {
+      "Learn to play guitar": "In Progress"
+    },
+    "Ryan": {
+      "Fix car issue": "In Progress",
+      "Donate old clothes": "Done",
+      "Call grandparents": "Done"
+    },
+    "Sophia": {
+      "Bake cookies": "Done",
+      "Start a side project": "In Progress",
+      "Take online class": "In Progress"
+    }
+  }
+  

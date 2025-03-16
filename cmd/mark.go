@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"TaskTracker/pkg"
+	"github.com/ADecentRaccoon/GoTaskTracker/pkg"
 	"encoding/json"
 	"fmt"
 	"os"

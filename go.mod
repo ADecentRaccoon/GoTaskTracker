@@ -1,4 +1,4 @@
-module TaskTracker
+module github.com/ADecentRaccoon/GoTaskTracker
 
 go 1.24.0
 

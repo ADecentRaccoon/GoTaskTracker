@@ -1,5 +1,5 @@
 package main
-import "TaskTracker/cmd"
+import "github.com/ADecentRaccoon/GoTaskTracker/cmd"
 
 func main() {
 	cmd.Execute()
