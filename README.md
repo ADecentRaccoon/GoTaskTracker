@@ -2,6 +2,8 @@
 It is usual CLI task tracker. Made using Go and library cobra. Application uses JSON file as storage.
 It is store data using map {"username": {"task name": "progress"}}
 
+	https://roadmap.sh/projects/task-tracker
+
 
 ## Using
 GoTaskTracker has 4 available commands:
